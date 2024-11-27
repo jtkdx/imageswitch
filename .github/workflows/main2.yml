@@ -3,10 +3,10 @@ name: Build and Test2
 on:
   push:
     branches:
-      - main  # メインブランチにプッシュされたときに実行
+      - main2  # メインブランチにプッシュされたときに実行
   pull_request:
     branches:
-      - main  # プルリクエストが送信されたときに実行
+      - main2  # プルリクエストが送信されたときに実行
 
 jobs:
   build:
