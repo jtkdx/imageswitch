@@ -31,11 +31,5 @@ jobs:
         python -m pip install --upgrade pip
         pip install pillow tkinterdnd2 pymupdf
 
-    - name: Install Xvfb
-      run: sudo apt-get install -y xvfb
-
-    - name: Run application with Xvfb
-      run: |
-        Xvfb :99 -screen 0 1024x768x16 &
-        export DISPLAY=:99
-        python imgswitch.py
+    - name: Run application
+      run: python imgswitch.py
