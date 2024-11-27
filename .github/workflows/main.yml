@@ -26,13 +26,10 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
+    - name: Install Homebrew
       run: |
-        python -m pip install --upgrade pip
-        pip install pillow tkinterdnd2 pymupdf
-
-    - name: Install Tkinter
-      run: brew install tcl-tk
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        brew install tcl-tk
 
     - name: Set environment variables for Tkinter
       run: |
@@ -41,7 +38,12 @@ jobs:
         echo 'export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"' >> $GITHUB_ENV
         echo 'export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"' >> $GITHUB_ENV
 
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pillow tkinterdnd2 pymupdf
+
     - name: Run application
       env:
-        DISPLAY: ':99'
+        DISPLAY: ':0'
       run: python imgswitch.py
