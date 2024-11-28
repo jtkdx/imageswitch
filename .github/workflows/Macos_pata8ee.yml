@@ -1,4 +1,4 @@
-name: Build macOS Application
+name: macOS Application_pata8ee
 
 on:
   push:
