@@ -30,10 +30,10 @@ jobs:
 
       - name: Build the application
         run: |
-          pyinstaller --onefile --windowed pata8.py
+          pyinstaller --onefile --windowed pata8ee.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: macOS-app
-          path: dist/pata8
+          path: dist/pata8ee
