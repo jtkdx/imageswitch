@@ -13,25 +13,25 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
+      - name: リポジトリをチェックアウト
         uses: actions/checkout@v2
 
-      - name: Set up Python
+      - name: Pythonをセットアップ
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
 
-      - name: Install dependencies
+      - name: 依存関係をインストール
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
 
-      - name: Build application with PyInstaller
+      - name: PyInstallerを使用してアプリケーションをビルド
         run: |
           pyinstaller --onefile pata8.py
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
+      - name: アーティファクトをアップロード
+        uses: actions/upload-artifact@v4
         with:
           name: macOS-app
           path: dist/pata8
