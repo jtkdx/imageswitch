@@ -33,7 +33,7 @@ jobs:
 
       - name: Build the application
         run: |
-          pyinstaller --onefile --windowed pata9.py
+          pyinstaller --onefile --windowed --add-data "libs/tkdnd;tkdnd" pata9.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
