@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: macOS-app
-          path: dist/pata8_p2i
+          path: dist/pata8_p2i_m
