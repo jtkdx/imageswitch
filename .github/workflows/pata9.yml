@@ -21,17 +21,11 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Uninstall pathlib
-        run: |
-          python -m pip uninstall -y pathlib
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller pillow tkinterdnd2 fitz
-
-      - name: Remove pathlib from site-packages
-        run: Remove-Item -Path "$env:USERPROFILE\.cache\pip\pkgs\pathlib*" -Force -Recurse
+          pip install pillow tkinterdnd2 fitz
+          pip install pyinstaller==4.10
 
       - name: Build the application
         run: |
