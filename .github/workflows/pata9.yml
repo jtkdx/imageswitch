@@ -30,6 +30,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller pillow tkinterdnd2 fitz
 
+      - name: Remove pathlib from site-packages
+        run: Remove-Item -Path "$env:USERPROFILE\.cache\pip\pkgs\pathlib*" -Force -Recurse
+
       - name: Build the application
         run: |
           pyinstaller --onefile --windowed pata9.py
