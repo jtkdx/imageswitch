@@ -25,4 +25,4 @@ jobs:
 
     - name: Generate EXE
       run: |
-        pyinstaller --onefile --noconsole your_script.py
+        pyinstaller --onefile --noconsole pata8_p2i.py
