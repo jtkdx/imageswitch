@@ -1,28 +1,44 @@
-name: Build and Package
+name: Build Windows Application_pata8ee
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Check out the repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pillow tkinter pdf2image pyinstaller
-        
-    - name: Install Poppler
-      run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          pip install pillow
+          pip install pymupdf
+          pip install pdf2image
+          pip install tkinter
 
-    - name: Generate EXE
-      run: |
-        pyinstaller --onefile --noconsole pata8_p2i.py
+      - name: Install Poppler 
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Build the application
+        run: |
+          pyinstaller --onefile --windowed pata8_p2i.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-app
+          path: dist/pata8_p2i.py
