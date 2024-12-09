@@ -1,0 +1,47 @@
+name: Build Windows Application_pata8_p2i_with_poppler
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          pip install pillow
+          pip install pdf2image
+          # tkinterのインストールを除外します
+
+      - name: Download and Install Poppler
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/oschwartz10612/poppler-windows/releases/download/v21.03.0/Release-21.03.0.zip" -OutFile "poppler.zip"
+          Expand-Archive -Path "poppler.zip" -DestinationPath "$env:USERPROFILE\poppler"
+          # Set the path to include poppler
+          $env:PATH += ";$env:USERPROFILE\poppler\poppler-21.03.0\Library\bin"
+
+      - name: Build the application
+        run: |
+          pyinstaller --onefile --windowed --add-binary "$env:USERPROFILE\poppler\poppler-21.03.0\Library\bin\*.dll;." --add-binary "$env:USERPROFILE\poppler\poppler-21.03.0\Library\bin\*.exe;." pata8_p2i.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-app
+          path: dist/pata8_p2i.exe
