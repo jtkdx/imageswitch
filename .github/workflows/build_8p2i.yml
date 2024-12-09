@@ -1,4 +1,4 @@
-name: Build Windows Application_pata8ee
+name: Build Windows Application_pata8_p2i
 
 on:
   push:
