@@ -38,7 +38,7 @@ jobs:
           pyinstaller --onefile --windowed pata8_p2i.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Windows-app
           path: dist/pata8_p2i.exe  # 正しいファイルパスを指定
