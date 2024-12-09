@@ -26,11 +26,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller pillow tkinterdnd2 pymupdf
 
-      - name: Download tkdnd
+      - name: Copy tkdnd to the appropriate location
         run: |
-          Invoke-WebRequest -Uri "https://sourceforge.net/projects/tkdnd/files/latest/download" -OutFile "tkdnd.zip"
-          Expand-Archive -Path "tkdnd.zip" -DestinationPath "$env:USERPROFILE\tkdnd"
-          Copy-Item -Path "$env:USERPROFILE\tkdnd\*" -Destination "$env:PYTHONPATH\tkdnd"
+          mkdir -p $env:PYTHONPATH\tkdnd
+          cp -r libs/tkdnd/* $env:PYTHONPATH\tkdnd/
 
       - name: Build the application
         run: |
