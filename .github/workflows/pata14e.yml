@@ -35,7 +35,7 @@ jobs:
 
       - name: Build the application
         run: |
-          pyinstaller --onefile --windowed pata14e.py --add-data "libs\tkdnd\libtkdnd2.8.dll;tkdnd"
+          pyinstaller --onefile --windowed pata14e.py --collect-data "libs\tkdnd\libtkdnd2.8.dll;tkdnd"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
