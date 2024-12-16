@@ -28,10 +28,11 @@ jobs:
 
       - name: Download and install tkdnd library
         run: |
-          curl -L -o tkdnd2.8.zip https://github.com/petasis/tkdnd/archive/refs/tags/2.8.zip
-          unzip tkdnd2.8.zip -d tkdnd2.8
+          git clone https://github.com/petasis/tkdnd.git
+          cd tkdnd
+          make -f Makefile.macos
           mkdir -p $HOME/Library/Python/3.9/lib/tkdnd
-          cp tkdnd2.8/tkdnd-2.8/libtkdnd2.8.dylib $HOME/Library/Python/3.9/lib/tkdnd
+          cp libtkdnd2.8.dylib $HOME/Library/Python/3.9/lib/tkdnd
 
       - name: Build the application
         run: |
