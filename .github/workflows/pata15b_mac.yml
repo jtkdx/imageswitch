@@ -29,9 +29,9 @@ jobs:
       - name: Download and install tkdnd library
         run: |
           git clone https://github.com/Eliav2/tkinterdnd2.git
-          cd tkinterdnd2/tkdnd/osx-x64
+          cd tkdnd
           mkdir -p $HOME/Library/Python/3.9/lib/tkdnd
-          cp libtkdnd2.9.4.dylib $HOME/Library/Python/3.9/lib/tkdnd
+          cp tkinterdnd2/tkdnd/osx-x64/libtkdnd2.9.4.dylib $HOME/Library/Python/3.9/lib/tkdnd
 
       - name: Build the application
         run: |
