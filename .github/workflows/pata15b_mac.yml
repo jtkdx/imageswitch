@@ -31,7 +31,7 @@ jobs:
           git clone https://github.com/petasis/tkdnd.git
           cd tkdnd
           mkdir -p $HOME/Library/Python/3.9/lib/tkdnd
-          cp macosx/libtkdnd2.8.dylib $HOME/Library/Python/3.9/lib/tkdnd
+          cp macos/libtkdnd2.8.dylib $HOME/Library/Python/3.9/lib/tkdnd
 
       - name: Build the application
         run: |
