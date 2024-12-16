@@ -1,0 +1,44 @@
+name: Build Windows Application_pata15b
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller pillow tkinterdnd2 pymupdf
+
+      - name: Download and install tkdnd library
+        run: |
+          curl -L -o tkdnd2.8.zip https://sourceforge.net/projects/tkdnd/files/tkdnd/2.8/tkdnd2.8.zip/download
+          powershell -Command "Expand-Archive -Path tkdnd2.8.zip -DestinationPath tkdnd2.8"
+          mkdir -p $env:APPDATA\Python\Python39\tcl\tkdnd
+          cp libs\tkdnd\libtkdnd2.8.dll $env:APPDATA\Python\Python39\tcl\tkdnd
+
+      - name: Build the application
+        run: |
+          pyinstaller --onefile --windowed pata15b.py --collect-data tkinterdnd2
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-app
+          path: dist/pata15b.exe
