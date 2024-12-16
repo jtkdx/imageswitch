@@ -28,10 +28,10 @@ jobs:
 
       - name: Download and install tkdnd library
         run: |
-          curl -L -o tkdnd2.9.2.zip https://sourceforge.net/projects/tkdnd/files/tkdnd/2.9/tkdnd2.9.2.zip/download
-          powershell -Command "Expand-Archive -Path tkdnd2.9.2.zip -DestinationPath tkdnd2.9.2"
+          curl -L -o tkdnd2.8.zip https://sourceforge.net/projects/tkdnd/files/tkdnd/2.8/tkdnd2.8.zip/download
+          powershell -Command "Expand-Archive -Path tkdnd2.8.zip -DestinationPath tkdnd2.8"
           mkdir -p $env:APPDATA\Python\Python39\tcl\tkdnd
-          cp tkdnd2.9.2/libtkdnd2.9.dll $env:APPDATA\Python\Python39\tcl\tkdnd
+          cp tkdnd2.8/libtkdnd2.8.dll $env:APPDATA\Python\Python39\tcl\tkdnd
 
       - name: Build the application
         run: |
