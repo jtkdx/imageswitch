@@ -28,7 +28,8 @@ jobs:
 
       - name: Download and install tkdnd library
         run: |
-          git clone https://github.com/petasis/tkdnd.git
+          #git clone https://github.com/petasis/tkdnd.git
+          git clone https://github.com/Eliav2/tkinterdnd2.git
           cd tkdnd
           mkdir -p $HOME/Library/Python/3.9/lib/tkdnd
           cp macos/libtkdnd2.8.dylib $HOME/Library/Python/3.9/lib/tkdnd
