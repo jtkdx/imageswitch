@@ -26,12 +26,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller pillow tkinterdnd2 pymupdf
 
-      - name: Download and install tkdnd
+      - name: Copy tkdnd library
         run: |
-          curl -L -o tkdnd.zip http://sourceforge.net/projects/tkdnd/files/tkdnd/2.9/tkdnd2.9.2.zip/download
-          tar -xf tkdnd.zip
           mkdir -p $env:APPDATA\Python\Python39\tcl\tkdnd
-          cp -r tkdnd2.9.2/* $env:APPDATA\Python\Python39\tcl\tkdnd
+          cp imageswitch/libs/tkdnd/libtkdnd2.8.dll $env:APPDATA\Python\Python39\tcl\tkdnd
 
       - name: Build the application
         run: |
