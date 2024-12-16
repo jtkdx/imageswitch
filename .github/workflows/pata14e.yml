@@ -31,11 +31,11 @@ jobs:
           curl -L -o tkdnd2.8.zip https://sourceforge.net/projects/tkdnd/files/tkdnd/2.8/tkdnd2.8.zip/download
           powershell -Command "Expand-Archive -Path tkdnd2.8.zip -DestinationPath tkdnd2.8"
           mkdir -p $env:APPDATA\Python\Python39\tcl\tkdnd
-          cp libs/tkdnd/libtkdnd2.8.dll $env:APPDATA\Python\Python39\tcl\tkdnd
+          cp tkdnd2.8/libtkdnd2.8.dll $env:APPDATA\Python\Python39\tcl\tkdnd
 
       - name: Build the application
         run: |
-          pyinstaller --onefile --windowed pata14e.py --add-data "$env:APPDATA\Python\Python39\tcl\tkdnd;tkdnd"
+          pyinstaller --onefile --windowed pata14e.py --add-data "tkdnd2.8/libtkdnd2.8.dll;tkdnd"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
