@@ -35,7 +35,7 @@ jobs:
 
       - name: Build the application
         run: |
-          pyinstaller --onefile --windowed pata14e.py --collect-data "libs\tkdnd\win64*;."
+          pyinstaller --onefile --windowed pata14e.py --collect-data tkinterdnd2
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
