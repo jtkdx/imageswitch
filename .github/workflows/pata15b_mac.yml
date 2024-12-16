@@ -28,8 +28,8 @@ jobs:
 
       - name: Download and install tkdnd library
         run: |
-          wget -O tkdnd2.8.tar.gz https://sourceforge.net/projects/tkdnd/files/tkdnd/2.8/tkdnd2.8.tar.gz/download
-          tar -xzf tkdnd2.8.tar.gz -C tkdnd2.8
+          curl -L -o tkdnd2.8-src.tar.gz https://ja.osdn.net/projects/sfnet_tkdnd/downloads/Windows%20Binaries/TkDND%202.8/tkdnd2.8-src.tar.gz
+          tar -xzf tkdnd2.8-src.tar.gz -C tkdnd2.8
           mkdir -p $HOME/Library/Python/3.9/lib/tkdnd
           cp libs/tkdnd/libtkdnd2.8.dylib $HOME/Library/Python/3.9/lib/tkdnd
 
