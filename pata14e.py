@@ -34,7 +34,7 @@ class ImageSwitcher(TkinterDnD.Tk):
         self.interval_label.grid(row=2, column=0, padx=5, pady=5, sticky="w")
         self.interval_entry = tk.Entry(self)
         self.interval_entry.grid(row=2, column=1, padx=5, pady=5)
-        self.interval_entry.insert(0, "5000")  # 初期値を5000msに設定
+        self.interval_entry.insert(0, "500")  # 初期値を500msに設定
 
         # 停止/再開ボタンと次へボタンの作成
         self.button_frame = tk.Frame(self)
