@@ -29,7 +29,7 @@ jobs:
       - name: Copy tkdnd library
         run: |
           mkdir -p $env:APPDATA\Python\Python39\tcl\tkdnd
-          cp imageswitch/libs/tkdnd/libtkdnd2.8.dll $env:APPDATA\Python\Python39\tcl\tkdnd
+          cp libs/tkdnd/libtkdnd2.8.dll $env:APPDATA\Python\Python39\tcl\tkdnd
 
       - name: Build the application
         run: |
